@@ -1,0 +1,149 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      car1
+    </div>
+    <div class="col-sm-3">
+      car2
+    </div>
+    <div class="col-sm-3">
+      car3
+    </div>
+    <div class="col-sm-3">
+      car4
+    </div>
+  </div>
+</div> -->
+
+<!-- {{this.getCarModelArr[index].model}} -->
+
+<div class="container mt-4">
+  <h1 class="text-center mb-5">Confused? Easy way to compare cars</h1>
+  <!-- <div class="row flex-column compare">
+    <ul>
+      <li class="compare__list">
+        <div class="card compare__list--card">
+          <img
+            class="card-img-top"
+            src="https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg"
+            alt="Card image"
+            style="width: 100%;"
+          />
+          <div class="card-body">
+            <h4 class="card-title">Baleno</h4>
+            <p class="card-text">Model Name</p>
+            <p><span>Car Variant</span></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div> -->
+
+  <div class="row">
+    <div class="col-sm-12 px-0 addCar">
+      <ul>
+        <li class="addCar__list" id="car1" *ngFor="let cardetails of getCarModelArr">
+          <!-- {{this.getCarModelArr.model}} -->
+          <div class="card addCar__brand">
+            <div class="row m-0 flex-column" (click)="selectCar(cardetails.id)">
+              
+              <ng-template #cardetailsImage>
+                <img
+                class="card-img-top"
+                src={{cardetails.img}}
+                alt="Card image"
+                style="width: 100%;"/>
+              </ng-template>
+              <div class="addCar__brand--image mb-4" *ngIf="cardetails.img === ''; else cardetailsImage">
+              </div> 
+              <div class="card-body p-0 select-carmodel">
+              <div *ngIf="cardetails.model ===''; else selectList">
+                <p>Select Brand/Model</p>
+              </div>
+              <div *ngIf="cardetails.varient ===''; else selectList2">
+                <p>Select Brand/Model</p>
+              </div>
+              <ng-template #selectList> 
+                  <p>{{ cardetails.model }}</p>
+              </ng-template>
+              <ng-template #selectList2> 
+                  <p>{{ cardetails.varient }}</p>
+                </ng-template>
+              
+              </div>
+            </div>
+
+            <div class="addCar__selectTab" *ngIf="showTab === cardetails.id">
+              <div class="addCar__selectTab--head"></div>
+              <div class="addCar__selectTab--listing">
+                <ul> 
+                  <li class="addCar__brand__list">
+                    <div class="addCar__brand__name">
+                      <ul class="mb-3">
+                        <li>
+                          <div class="custom-tab">
+                            <ul class="custom-tab-list">
+                              <li
+                                *ngFor="let tabList of tabLists"
+                                [class.active]="selectTabLists === tabList"
+                              >
+                                <a (click)="selectTabLists = tabList">
+                                  {{ tabList }}
+                                </a>
+                              </li>
+                            </ul>
+                            <div class="tab-content">
+                              <div
+                                *ngIf="selectTabLists === tabLists[0]"
+                                class="tab-pane active"
+                                id="one"
+                              >
+                                <h6>
+                                  {{ carsList.cars.brandName }}
+                                </h6>
+                                <div
+                                  class="addCar__brand--list"
+                                  *ngFor="let carModel of carsList.cars.models"
+                                  (click)="getCarsName(carModel.name, cardetails.id, carModel.img)"
+                                >
+                                  {{ carModel.name }}
+                                </div>
+                              </div>
+
+                              <div
+                                *ngIf="selectTabLists === tabLists[1]"
+                                class="tab-pane active"
+                                id="two"
+                              >
+                                <h6>
+                                  Car varient
+                                </h6>
+                                <ng-container
+                                  *ngFor="let varient1 of carsList.cars.models"
+                                >
+                                  <div *ngFor="let item of varient1.varient">
+                                    <div *ngFor="let varient of item.petrol" 
+                                    (click)="getCarsVarient(varient, cardetails.id)">
+                                      {{ varient }}
+                                    </div>
+                                  </div>
+                                </ng-container>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>        
+      </ul>
+    </div><!--addCar section ends -->
+    <div class="col-sm-12 text-center mt-5">
+        <button type="button" class="btn btn-primary" (click)="compareCars()">Compare</button>
+    </div>
+  </div>
+</div>
