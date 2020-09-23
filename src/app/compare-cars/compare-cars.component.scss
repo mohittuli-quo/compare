@@ -24,11 +24,17 @@
     }
 
     .addCar__list{
-        padding: 0;
+        position: relative;
         max-width: 250px;
         min-width: 250px;
         width: 25%;
-
+        background: #fff;
+        text-align: left;
+        padding: 10px;
+    
+        img{
+            width: 100%;
+        }
         .addCar__brand--image{
             width: 72px;
             height: 72px;
@@ -137,4 +143,26 @@
 button{
     width: 310px;
     height: 70px;
+}
+.filteredData{
+    color: #444444;
+    .card{
+        margin-bottom: 15px;
+        padding:10px;
+        h1{
+            color: #444444;
+        }
+    }
+    .tabble-responsive{
+        background-color: white;
+        body{
+            tr{
+                td{
+                    &:nth-child(1){
+                         text-align: left;   
+                    }
+                }
+            }
+        }
+    }
 }

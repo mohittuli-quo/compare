@@ -1,11 +1,17 @@
 
 <div class="container">
     <h1 class="text-center mb-5">compare-cars-detail works!</h1>    
-    <p>{{selectedCars}}</p>
     <!-- <ul>
-        <li *ngFor="let selectedCar of selectedCars">
-            {{selectedCar.id}}
+        <li *ngFor="let selectedCar of carsListService.selectedCarList">
+            {{selectedCar.name}}
         </li>
     </ul> -->
+
+   <ul>
+       <li *ngFor="let item of selectedCars">
+           {{item.name}}
+       </li>
+   </ul>
+   {{selectedCars}}
 
 </div>

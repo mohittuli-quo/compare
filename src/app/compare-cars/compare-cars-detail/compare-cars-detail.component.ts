@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { filter } from "rxjs/operators";
+import { CarsListService } from 'src/app/service/cars-list.service';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-compare-cars-detail',
@@ -10,29 +12,16 @@ import { filter } from "rxjs/operators";
 })
 export class CompareCarsDetailComponent implements OnInit {
   
-  selectedCars:any;
+  selectedCars;
 
-  constructor(private route: ActivatedRoute) { 
+  constructor(public carsListService:CarsListService, private route:ActivatedRoute) { 
      
   }
 
   ngOnInit(): void {
 
-    // this.route.queryParams.subscribe(params => {
-    //   console.log(params); 
-    // });
-
-
     this.selectedCars = this.route.snapshot.queryParamMap.get("carsId");
-    console.log(this.selectedCars);
-
-      // this.order = this.route.snapshot.queryParamMap.get("carsId");
-    
-
-    // this.route.queryParams.filter(params => params.id)
-    // .subscribe(params => {
-    //   console.log(params); 
-    // });
-}
+    console.log(JSON.parse(this.selectedCars)); 
+  }
 
 }

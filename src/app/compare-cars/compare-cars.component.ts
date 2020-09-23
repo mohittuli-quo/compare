@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { CarList } from '../../model/car-list';
 
 @Component({
   selector: 'app-compare-cars',
@@ -13,7 +13,7 @@ export class CompareCarsComponent implements OnInit {
       brandName: 'maruti',
       models: [
         {
-          id: 100,
+          carId: 100,
           name: 'baleno',
           mileage: '25',
           description:
@@ -21,12 +21,7 @@ export class CompareCarsComponent implements OnInit {
           'engine type': 'petrol',
           'fast charging': 'no',
           'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
-          varient: [
-            {
-              petrol: ['sigma', 'delta'],
-              diesel: 'delta',
-            },
-          ],
+          varient: ['Tour', 'Swift Tour', 'Tour Dzire'],
         },
         {
           id: 101,
@@ -37,7 +32,7 @@ export class CompareCarsComponent implements OnInit {
           'engine type': 'petrol',
           'fast charging': 'yes',
           'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
-          varient: ['VXI', 'VDI', 'VZI'],
+          varient: ['petrol', 'Diesel', 'VZI'],
         },
         {
           id: 102,
@@ -65,18 +60,20 @@ export class CompareCarsComponent implements OnInit {
     },
   }
 
-  showTab;
+  showTab:Boolean = false;
   selectcar: Boolean = false;
 
   tabLists: string[] = ['Carname', 'Carmodel'];
   selectTabLists = '';
   getCarModelArr = [
-    { id: 0, model: 'select Model', varient: 'select varient', img:'' },
-    { id: 1, model: 'select Model', varient: 'select varient', img:''},
-    { id: 2, model: 'select Model', varient: 'select varient', img:''},
+    { model: 'select Model', varient: 'Select Varient', img:'' },
+    { model: 'select Model', varient: 'Select Varient', img:''},
+    { model: 'select Model', varient: 'Select Varient', img:''},
   ];
 
-  carId;
+  selectedCars=[];
+
+  // getCarModelArr:CarList[] = [];
 
   constructor(private router: Router) {}
 
@@ -88,11 +85,25 @@ export class CompareCarsComponent implements OnInit {
     this.selectTabLists = this.tabLists[0];
   }
 
-  getCarsName(carModel, index, img, id) {
-    this.carId = id;
-    this.getCarModelArr[index].model = carModel;
-    this.getCarModelArr[index].img = img;   
+  getCarsName(carModel, index) {
+    const isExist = this.selectedCars.findIndex(c=>c.name==carModel.name);
+    if(isExist!=-1){
+      this.selectedCars = this.selectedCars.filter(x => x.name == carModel.name)
+      alert("select Different Car. This Car is already selected");
+      return this.selectedCars;
+    }
+    this.selectedCars.push(carModel);
+    
+    console.log("Selected cars:--" + JSON.stringify(this.selectedCars));
 
+
+
+
+    this.getCarModelArr[index] = carModel;
+    this.getCarModelArr[index].model = carModel.name;
+    this.getCarModelArr[index].img = carModel.img;   
+
+    // this.getCarModelArr[index].id = index;
 
     if (this.getCarModelArr[index].model) {
       this.selectTabLists = this.tabLists[1];
@@ -104,10 +115,12 @@ export class CompareCarsComponent implements OnInit {
     this.showTab = false;
   }
 
-  // carsId:any;
+  filteredData;
+
   compareCars(){
-  
-  this.router.navigate(['/compare-cars-details'], { queryParams: {carsId: JSON.stringify(this.getCarModelArr) }});
-  // console.log(this.getCarModelArr);
+    this.filteredData = this.getCarModelArr;
+
+
+    // this.router.navigate(['/compare-cars-details'], { queryParams: {carsId: JSON.stringify(this.getCarModelArr) }});
   }
 }
