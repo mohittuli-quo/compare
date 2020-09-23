@@ -22,6 +22,7 @@ export class CompareCarsDetailComponent implements OnInit {
     //   console.log(params); 
     // });
 
+
     this.selectedCars = this.route.snapshot.queryParamMap.get("carsId");
     console.log(this.selectedCars);
 
