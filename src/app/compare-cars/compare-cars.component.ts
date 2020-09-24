@@ -112,7 +112,12 @@ export class CompareCarsComponent implements OnInit {
   filteredData:any[]=[];
 
   compareCars(){
-    this.filteredData = this.selectedCars;
+      this.filteredData = this.selectedCars;
+      if(this.filteredData.length<=1){
+          alert("Please select at least 2 cars");
+      }else{
+        this.filteredData = this.selectedCars;
+      }
 
   }
 }
