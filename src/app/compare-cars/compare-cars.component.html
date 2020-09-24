@@ -99,50 +99,61 @@
 </div>
 </div>
 
-<!-- *ngFor="let data of filteredData" -->
-
-<div class="container mt-5 filteredData">
+<div class="container mt-5 text-center filteredData" *ngIf="filteredData.length">
   <div class="row">
-    <div class="col-sm-12">
-      <div class="card">
-        <h1>
-          Maruti Baleno vs Maruti Baleno
-          <!-- <span>{{data.name}}</span> -->
-        </h1>  
-        <p>The Maruti Baleno price ranges from Rs 5.63 - 8.96 Lakh. and the Baleno Automatic starts at Rs 7.76 Lakh. As far as mileage is concerned, depending upon the fuel type and variant, the Baleno has a mileage of 19.56 kmpl to 23.87 kmpl.</p>
-      </div>
-
+    <div class="col-sm-3 px-0 text-left">
       <div class="row">
-        <div class="col-sm-12 tabble-responsive">
-          <table class="table table-striped text-center">
-            <thead>
-              <tr>
-                <th>&nbsp;</th>
-                <th>Delta</th>
-                <th>Sigma</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Fast Charging</td>
-                <td>No</td>
-                <td>yes</td>
-              </tr>
-              <tr>
-                <td>Mileage (ARAI)</td>
-                <td>21.01 kmpl</td>
-                <td>23.87 kmpl</td>
-              </tr>
-              <tr>
-                <td>Central Locking</td>
-                <td>No</td>
-                <td>yes</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="col-sm-12 px-0 table-row-head">
+          <h3>&nbsp;</h3>  
+          <div class="table-row">
+            Car Name
+          </div>
+          <div class="table-row">
+            Car Model
+          </div>
+          <div class="table-row">
+            engine type
+          </div>
+          <div class="table-row">
+            fast charging
+          </div>
+          <div class="table-row">
+            Car mileage
+          </div>
+          <div class="table-row">
+            Car varient
+          </div>
         </div>
       </div>
-  
-    </div>
+    </div><!--col-sm-3 ends here-->
+    <ng-container *ngFor="let carData of filteredData">
+     
+    <div class="col px-0">
+        <h3>{{carData.name}}</h3>  
+     
+      <div class="row">
+        <div class="col-sm-12 px-0">
+          <div class="table-row">
+            {{carData.name}}
+          </div>
+          <div class="table-row">
+            {{carData.model}}
+          </div>
+          <div class="table-row">
+            {{carData.engine}}
+          </div>
+          <div class="table-row">
+            {{carData.charging}}
+          </div>
+          <div class="table-row">
+            {{carData.mileage}}
+          </div>
+          <div class="table-row">
+            {{carData.varient}}
+          </div>
+        </div>
+      </div>
+    </div><!--col-sm-3 ends here-->
+  </ng-container>
   </div>
 </div>

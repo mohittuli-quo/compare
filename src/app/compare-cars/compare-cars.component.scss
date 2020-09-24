@@ -146,23 +146,22 @@ button{
 }
 .filteredData{
     color: #444444;
-    .card{
-        margin-bottom: 15px;
-        padding:10px;
-        h1{
-            color: #444444;
-        }
+    background: #fff;
+    padding: 20px;
+    text-transform: capitalize;
+
+    h1{
+        color: #444444;
     }
-    .tabble-responsive{
-        background-color: white;
-        body{
-            tr{
-                td{
-                    &:nth-child(1){
-                         text-align: left;   
-                    }
-                }
-            }
-        }
+    .table-row-head{
+        .table-row{
+            border-right: 1px solid #ccc;
+          }        
     }
+    .table-row{
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+    }
+
+
 }

@@ -13,13 +13,12 @@ export class CompareCarsComponent implements OnInit {
       brandName: 'maruti',
       models: [
         {
-          carId: 100,
+          id: 100,
           name: 'baleno',
-          mileage: '25',
-          description:
-            'Sigma Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
-          'engine type': 'petrol',
-          'fast charging': 'no',
+          mileage: 25,
+          description: 'Sigma Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
+          engine: 'petrol',
+          charging: 'no',
           'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
           varient: ['Tour', 'Swift Tour', 'Tour Dzire'],
         },
@@ -29,8 +28,8 @@ export class CompareCarsComponent implements OnInit {
           mileage: '28',
           description:
             'Swift Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
-          'engine type': 'petrol',
-          'fast charging': 'yes',
+          engine: 'petrol',
+          charging: 'yes',
           'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
           varient: ['petrol', 'Diesel', 'VZI'],
         },
@@ -40,8 +39,8 @@ export class CompareCarsComponent implements OnInit {
           mileage: '23',
           description:
             'alto Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
-          'engine type': 'petrol',
-          'fast charging': 'no',
+          engine: 'petrol',
+          charging: 'no',
           'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
           varient: ['VXI', 'VDI', 'VZI'],
         },
@@ -51,8 +50,8 @@ export class CompareCarsComponent implements OnInit {
           mileage: '25',
           description:
             'dzire Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
-          'engine type': 'petrol',
-          'fast charging': 'no',
+          engine: 'petrol',
+          charging: 'no',
           'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
           varient: ['Tour', 'Swift Tour', 'Tour Dzire'],
         },
@@ -60,6 +59,7 @@ export class CompareCarsComponent implements OnInit {
     },
   }
 
+  selectedCars:any[] = [];
   showTab:Boolean = false;
   selectcar: Boolean = false;
 
@@ -70,10 +70,6 @@ export class CompareCarsComponent implements OnInit {
     { model: 'select Model', varient: 'Select Varient', img:''},
     { model: 'select Model', varient: 'Select Varient', img:''},
   ];
-
-  selectedCars=[];
-
-  // getCarModelArr:CarList[] = [];
 
   constructor(private router: Router) {}
 
@@ -86,24 +82,22 @@ export class CompareCarsComponent implements OnInit {
   }
 
   getCarsName(carModel, index) {
-    const isExist = this.selectedCars.findIndex(c=>c.name==carModel.name);
-    if(isExist!=-1){
-      this.selectedCars = this.selectedCars.filter(x => x.name == carModel.name)
-      alert("select Different Car. This Car is already selected");
-      return this.selectedCars;
-    }
-    this.selectedCars.push(carModel);
-    
-    console.log("Selected cars:--" + JSON.stringify(this.selectedCars));
-
-
-
+  
+          const isExist = this.selectedCars.findIndex(c=>c.name==carModel.name);
+          if(isExist!=-1){
+            this.selectedCars = this.selectedCars.filter(x => x.name == carModel.name)
+            alert("select Different Car. This Car is already selected");
+            return this.selectedCars;
+          }
+          else{
+            this.selectedCars.push(carModel);
+          }
+       console.log(this.selectedCars);   
 
     this.getCarModelArr[index] = carModel;
     this.getCarModelArr[index].model = carModel.name;
     this.getCarModelArr[index].img = carModel.img;   
-
-    // this.getCarModelArr[index].id = index;
+    
 
     if (this.getCarModelArr[index].model) {
       this.selectTabLists = this.tabLists[1];
@@ -115,12 +109,10 @@ export class CompareCarsComponent implements OnInit {
     this.showTab = false;
   }
 
-  filteredData;
+  filteredData:any[]=[];
 
   compareCars(){
-    this.filteredData = this.getCarModelArr;
+    this.filteredData = this.selectedCars;
 
-
-    // this.router.navigate(['/compare-cars-details'], { queryParams: {carsId: JSON.stringify(this.getCarModelArr) }});
   }
 }
