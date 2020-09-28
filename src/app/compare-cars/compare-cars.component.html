@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 cars-wrapper">
   <h1 class="text-center mb-5">Confused? Easy way to compare cars</h1>
   <div class="row">
      <div class="col-sm-12 px-0 addCar">
@@ -56,16 +56,18 @@
                                                class="tab-pane active"
                                                id="one"
                                                >
-                                               <h6>
-                                                  {{ carsList.cars.brandName }}
-                                               </h6>
-                                               <div
-                                               class="addCar__brand--list"
-                                               *ngFor="let carModel of carsList.cars.models"
-                                               (click)="getCarsName(carModel, i)"
-                                               >
-                                               {{ carModel.name }}
-                                            </div>
+                                               <ng-container *ngFor="let carList of carsList">
+                                                 <h6>
+                                                    {{ carList.brandName }}
+                                                 </h6>
+                                                 <div
+                                                 class="addCar__brand--list"
+                                                 *ngFor="let carModel of carList.models"
+                                                 (click)="getCarsName(carModel, i)"
+                                                 >
+                                                 {{ carModel.name }}
+                                                </div>
+                                               </ng-container>
                                          </div>
                                          <div
                                             *ngIf="selectTabLists === tabLists[1]"
@@ -93,67 +95,35 @@
   </ul>
 </div>
 <!--addCar section ends -->
+
 <div class="col-sm-12 text-center mt-5">
   <button type="button" class="btn btn-primary" (click)="compareCars()">Compare</button>
 </div>
-</div>
-</div>
-
-<div class="container mt-5 text-center filteredData" *ngIf="filteredData.length >= 2">
+  </div><!--row ends here-->
+ 
   <div class="row">
-    <div class="col-sm-3 px-0 text-left">
+   <div class="col-sm-12 text-center filteredData" *ngIf="filteredData.length >= 2">
+     <div class="row">
+       <div class="col">
+         No data here
+       </div>
+        <!-- <div class="col px-0" *ngFor="let carData of filteredData">  
+          {{carData | json}}
+        </div> -->
+      </div><!--row ends here-->
       <div class="row">
-        <div class="col-sm-12 px-0 table-row-head">
-          <h3>&nbsp;</h3>  
-          <div class="table-row">
-            Car Name
-          </div>
-          <div class="table-row">
-            Car Model
-          </div>
-          <div class="table-row">
-            engine type
-          </div>
-          <div class="table-row">
-            fast charging
-          </div>
-          <div class="table-row">
-            Car mileage
-          </div>
-          <div class="table-row">
-            Car varient
-          </div>
+        <div *ngFor="let cData1 of filteredData; let z of index">
+          <!-- {{cData | json}} -->
+          {{cData1[z].fuel-performance}}
+             <!-- <div *ngFor="let fuel of cData.fuel-performance; let j of index">
+               <div class="col px-0">  
+                {{fuel.label}}
+              </div>
+          </div> -->
         </div>
-      </div>
-    </div><!--col-sm-3 ends here-->
-    <ng-container *ngFor="let carData of filteredData">
-     
-    <div class="col px-0">
-        <h3>{{carData.name}}</h3>  
-     
-      <div class="row">
-        <div class="col-sm-12 px-0">
-          <div class="table-row">
-            {{carData.name}}
-          </div>
-          <div class="table-row">
-            {{carData.model}}
-          </div>
-          <div class="table-row">
-            {{carData.engine}}
-          </div>
-          <div class="table-row">
-            {{carData.charging}}
-          </div>
-          <div class="table-row">
-            {{carData.mileage}}
-          </div>
-          <div class="table-row">
-            {{carData.varient}}
-          </div>
-        </div>
-      </div>
-    </div><!--col-sm-3 ends here-->
-  </ng-container>
-  </div>
+       </div><!--row ends here-->
+   </div>
+ </div>
 </div>
+ 
+ 

@@ -30,7 +30,10 @@
         width: 25%;
         background: #fff;
         text-align: left;
-        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(36,39,44,.15);
+        // box-shadow: 1px 2px 3px 2px rgba(0,0,0,0.1);
+        // padding: 10px;
     
         img{
             width: 100%;
@@ -45,7 +48,7 @@
             -webkit-border-radius: 50%;
             border-radius: 50%;
             position: relative;
-            margin: 30px auto 8px;
+            margin: 69px auto 8px;
             
             &::before{
                 content: "";
@@ -82,7 +85,7 @@
                 background: #fff;
                 cursor: pointer;
                 margin: 0;
-                border: 1px solid #d6d6d6;
+                border: 1px solid #f4f4f4;
                 border-radius: 2px;
             }
         }
@@ -140,13 +143,33 @@
     }
 }
 
-button{
-    width: 310px;
-    height: 70px;
+.cars-wrapper{
+    button{
+        background-color: rgb(66, 166, 211) !important;
+        border-color: rgb(66, 166, 211) !important;
+        width: 200px;
+        height: 70px;
+        box-shadow: none;
+        &:hover{
+            background: rgba(66, 166, 211, 0.8);
+            border-color: rgb(66, 166, 211);
+            outline:none;
+        }
+        &:focus{
+            background: rgba(66, 166, 211, 0.8);
+            border-color: rgb(66, 166, 211);
+            outline:none;
+        }
+        &:active{
+            background: rgba(66, 166, 211, 0.8);
+            border-color: rgb(66, 166, 211);
+            box-shadow: none;
+        }
+    }
 }
 .filteredData{
     color: #444444;
-    background: #fff;
+    // background: #fff;
     padding: 20px;
     text-transform: capitalize;
 
