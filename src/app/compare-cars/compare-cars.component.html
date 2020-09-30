@@ -1,129 +1,295 @@
 <div class="container mt-4 cars-wrapper">
   <h1 class="text-center mb-5">Confused? Easy way to compare cars</h1>
   <div class="row">
-     <div class="col-sm-12 px-0 addCar">
-        <ul>
-           <li class="addCar__list" id="car1" *ngFor="let cardetails of getCarModelArr; let i = index;">
-              <!-- {{this.getCarModelArr.model}} -->
-              <div class="card addCar__brand">
-                 <div class="row m-0 flex-column" (click)="selectCar(i)">
-                    <ng-template #cardetailsImage>
-                       <img
-                          class="card-img-top"
-                          src={{cardetails.img}}
-                          alt="Card image"
-                          style="width: 100%;"/>
-                    </ng-template>
-                    <div class="addCar__brand--image mb-4" *ngIf="cardetails.img === ''; else cardetailsImage">
-                    </div>
-                    <div class="card-body p-0 select-carmodel">
-                       <div *ngIf="cardetails.model ===''; else selectList">
-                          <p>Select Brand/Model</p>
-                       </div>
-                       <div *ngIf="cardetails.varient ===''; else selectList2">
-                          <p>Select Varient</p>
-                       </div>
-                       <ng-template #selectList>
-                          <p>{{ cardetails.model }}</p>
-                       </ng-template>
-                       <ng-template #selectList2>
-                          <p>{{ cardetails.varient }}</p>
-                       </ng-template>
-                    </div>
-                 </div>
-                 <div class="addCar__selectTab" *ngIf="showTab === i">
-                    <div class="addCar__selectTab--head"></div>
-                    <div class="addCar__selectTab--listing">
-                       <ul>
-                          <li class="addCar__brand__list">
-                             <div class="addCar__brand__name">
-                                <ul class="mb-3">
-                                   <li>
-                                      <div class="custom-tab">
-                                         <ul class="custom-tab-list">
-                                            <li
-                                            *ngFor="let tabList of tabLists"
-                                            [class.active]="selectTabLists === tabList"
-                                            >
-                                            <a (click)="selectTabLists = tabList">
-                                            {{ tabList }}
-                                            </a>
-                                            </li>
-                                         </ul>
-                                         <div class="tab-content">
-                                            <div
-                                               *ngIf="selectTabLists === tabLists[0]"
-                                               class="tab-pane active"
-                                               id="one"
-                                               >
-                                               <ng-container *ngFor="let carList of carsList">
-                                                 <h6>
-                                                    {{ carList.brandName }}
-                                                 </h6>
-                                                 <div
-                                                 class="addCar__brand--list"
-                                                 *ngFor="let carModel of carList.models"
-                                                 (click)="getCarsName(carModel, i)"
-                                                 >
-                                                 {{ carModel.name }}
-                                                </div>
-                                               </ng-container>
-                                         </div>
-                                         <div
-                                            *ngIf="selectTabLists === tabLists[1]"
-                                            class="tab-pane active"
-                                            id="two"
-                                            >
-                                            <h6>
-                                               Car varient
-                                            </h6>
-                                            <div *ngFor="let varient of cardetails.varient" (click)="getCarsVarient(varient, i)">
-                                            {{ varient }}
-                                         </div>
-                                      </div>
-                             </div>
-                    </div>
-                    </li>
-                    </ul>
-                 </div>
-                 </li>
-                 </ul>
+    <div class="col-sm-12 px-0 addCar">
+      <ul>
+        <li
+          class="addCar__list"
+          id="car1"
+          *ngFor="let cardetails of getCarModelArr; let i = index"
+        >
+          <!-- {{this.getCarModelArr.model}} -->
+          <div class="card addCar__brand">
+            <div class="row m-0 flex-column" (click)="selectCar(i)">
+              <ng-template #cardetailsImage>
+                <img
+                  class="card-img-top"
+                  src="{{ cardetails.img }}"
+                  alt="Card image"
+                  style="width: 100%;"
+                />
+              </ng-template>
+              <div
+                class="addCar__brand--image mb-4"
+                *ngIf="cardetails.img === ''; else cardetailsImage"
+              ></div>
+              <div class="card-body p-0 select-carmodel">
+                <div *ngIf="cardetails.model === ''; else selectList">
+                  <p>Select Brand/Model</p>
+                </div>
+                <div *ngIf="cardetails.varient === ''; else selectList2">
+                  <p>Select Varient</p>
+                </div>
+                <ng-template #selectList>
+                  <p>{{ cardetails.model }}</p>
+                </ng-template>
+                <ng-template #selectList2>
+                  <p>{{ cardetails.selectedVarient ? cardetails.selectedVarient : 'Select Varient' }}</p>
+                </ng-template>
               </div>
-     </div>
-  </div>
-  </li> 
-  </ul>
-</div>
-<!--addCar section ends -->
+            </div>
+            <div class="addCar__selectTab" *ngIf="showTab === i">
+              <div class="addCar__selectTab--head"></div>
+              <div class="addCar__selectTab--listing">
+                <ul>
+                  <li class="addCar__brand__list">
+                    <div class="addCar__brand__name">
+                      <ul class="mb-3">
+                        <li>
+                          <div class="custom-tab">
+                            <ul class="custom-tab-list">
+                              <li
+                                *ngFor="let tabList of tabLists"
+                                [class.active]="selectTabLists === tabList"
+                              >
+                                <a (click)="selectTabLists = tabList">
+                                  {{ tabList }}
+                                </a>
+                              </li>
+                            </ul>
+                            <div class="tab-content">
+                              <div
+                                *ngIf="selectTabLists === tabLists[0]"
+                                class="tab-pane active"
+                                id="one"
+                              >
+                                <ng-container *ngFor="let carList of carsList">
+                                  <h6>
+                                    {{ carList.brandName }}
+                                  </h6>
+                                  <div
+                                    class="addCar__brand--list"
+                                    *ngFor="let carModel of carList.models"
+                                    (click)="getCarsName(carModel, i)"
+                                  >
+                                    {{ carModel.name }}
+                                  </div>
+                                </ng-container>
+                              </div>
+                              <div
+                                *ngIf="selectTabLists === tabLists[1]"
+                                class="tab-pane active"
+                                id="two"
+                              >
+                                <h6>
+                                  Car varient
+                                </h6>
+                                <div class="addModel__brand--list"
+                                  *ngFor="let varient of cardetails.varient"
+                                  (click)="getCarsVarient(varient, i)"
+                                >
+                                  {{ varient }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--addCar section ends -->
 
-<div class="col-sm-12 text-center mt-5">
-  <button type="button" class="btn btn-primary" (click)="compareCars()">Compare</button>
-</div>
-  </div><!--row ends here-->
- 
-  <div class="row">
-   <div class="col-sm-12 text-center filteredData" *ngIf="filteredData.length >= 2">
-     <div class="row">
-       <div class="col">
-         No data here
-       </div>
-        <!-- <div class="col px-0" *ngFor="let carData of filteredData">  
-          {{carData | json}}
-        </div> -->
-      </div><!--row ends here-->
-      <div class="row">
-        <div *ngFor="let cData1 of filteredData; let z of index">
-          <!-- {{cData | json}} -->
-          {{cData1[z].fuel-performance}}
-             <!-- <div *ngFor="let fuel of cData.fuel-performance; let j of index">
-               <div class="col px-0">  
-                {{fuel.label}}
-              </div>
-          </div> -->
+    <div class="col-sm-12 text-center mt-5">
+      <button type="button" class="btn btn-primary" (click)="compareCars()">
+        Compare
+      </button>
+    </div>
+  </div>
+  <!--row ends here-->
+
+  <div class="row mt-5">
+    <div
+      class="col-sm-12 text-center filteredData"
+      *ngIf="filteredData.length >= 2"
+    >
+      <div class="row sticky-row">
+        <div class="col fake-div">
+            &nbsp;
         </div>
-       </div><!--row ends here-->
-   </div>
- </div>
+        <div class="col" *ngFor="let carData of filteredData">
+          {{ carData.name }}
+        </div>
+      </div>
+      <!--row ends here-->
+
+
+
+
+      <div class="row feature-card">
+        <h3 class="mb-4">Fuel & Performance</h3>
+        <div class="feature-card-row">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td class="text-left">Fuel & Performance</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div *ngFor="let fuel of cData['fuel-performance']">
+                      {{ fuel.fueltype }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-left">Mileage (City)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div *ngFor="let fuel of cData['fuel-performance']">
+                      {{ fuel.mileagecity }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-left">Mileage (ARAI)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div *ngFor="let fuel of cData['fuel-performance']">
+                      {{ fuel.mileage }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-left">Fuel Tank Capacity (Litres)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div *ngFor="let fuel of cData['fuel-performance']">
+                      {{ fuel.fuelSize }}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--row ends here-->
+
+      <div class="row feature-card">
+        <h3 class="mb-4">Engine and Transmission</h3>
+        <div class="feature-card-row">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td class="text-left">Engine Type</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div
+                      *ngFor="let transmission of cData['engine-transmission']"
+                    >
+                      {{ transmission.enginetype }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-left">Displacement (cc)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div
+                      *ngFor="let transmission of cData['engine-transmission']"
+                    >
+                      {{ transmission.displacement }}
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-left">Max Power (bhp@rpm)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div
+                      *ngFor="let transmission of cData['engine-transmission']"
+                    >
+                      {{ transmission.maxpower }}
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-left">Max Torque (nm@rpm)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div
+                      *ngFor="let transmission of cData['engine-transmission']"
+                    >
+                      {{ transmission.maxtorque }}
+                    </div>
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--row ends here-->
+
+      <div class="row feature-card">
+        <h3 class="mb-4">Dimensions & Capacity</h3>
+        <div class="feature-card-row">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td class="text-left">Length (mm)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div
+                      *ngFor="let dimensions of cData['dimensions-capacity']"
+                    >
+                      {{ dimensions.length }}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-left">Width (mm)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div
+                      *ngFor="let width of cData['dimensions-capacity']"
+                    >
+                      {{ width.width }}
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-left">Height (mm)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div
+                      *ngFor="let height of cData['dimensions-capacity']"
+                    >
+                      {{ height.height }}
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="text-left">Ground Clearance Unladen (mm)</td>
+                  <td *ngFor="let cData of filteredData">
+                    <div
+                      *ngFor="let groundClearance of cData['dimensions-capacity']"
+                    >
+                      {{ groundClearance.groundClearance }}
+                    </div>
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--row ends here-->
+    </div>
+  </div>
 </div>
- 
- 

@@ -116,7 +116,14 @@
                                 background-color: #42a6d3;
                                 color: #fff;
                             }
-
+                        }
+                        .addModel__brand--list{
+                            cursor: pointer;
+                            padding-left: 7px;
+                            &:hover{
+                                background-color: #42a6d3;
+                                color: #fff;
+                            }
                         }
                     }
                 }
@@ -167,23 +174,57 @@
         }
     }
 }
+
+.cars-wrapper{
+    h1{
+        margin: 5rem 7rem;
+    }
+}
 .filteredData{
     color: #444444;
     // background: #fff;
     padding: 20px;
     text-transform: capitalize;
 
+    .sticky-row{
+        position: sticky;
+        top: 0;
+        padding: 20px;
+        background: #fff;
+        margin-bottom: 10px;
+        font-weight: bold;
+        box-shadow: 0 1px 3px rgba(36, 39, 44, 0.15);
+
+        .fake-div{
+            max-width: 250px;
+        }
+    }
+
     h1{
         color: #444444;
     }
-    .table-row-head{
-        .table-row{
-            border-right: 1px solid #ccc;
-          }        
+
+    .feature-card{
+        -webkit-box-shadow: 0 1px 3px rgba(36,39,44,.15);
+        box-shadow: 0 1px 3px rgba(36,39,44,.15);
+        background: #fff;
+        margin: 0 0 50px 0;
+        padding: 30px;
+
+        .feature-card-row{
+            width: 100%;
+            display: flex;
+        }
     }
-    .table-row{
-        border-bottom: 1px solid #ccc;
-        padding: 10px;
+
+    table{
+        tr{
+            td{
+                &:nth-of-type(1){
+                    width: 250px;
+                }
+            }
+        }
     }
 
 
