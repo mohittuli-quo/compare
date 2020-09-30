@@ -82,22 +82,13 @@ export class CompareCarsComponent implements OnInit {
 
  
     getCarsVarient(carVarient, index) {
-        // this.getCarModelArr[index].varient.slice(1, carVarient);
         this.getCarModelArr[index].selectedVarient = carVarient;
-
-        // this.getCarModelArr[index] = this.getCarModelArr[index];
-        // console.log(this.getCarModelArr[index].varient);
-        // console.log(this.getCarModelArr[index].selectedVarient);
         console.log(this.getCarModelArr);
- 
-
-
         this.showTab = false;
     }
 
     compareCars() {
         this.filteredData = this.selectedCars;
-        // console.log(this.filteredData);
         if (this.filteredData.length <= 1) {
             alert("Please select at least 2 cars");
         }
