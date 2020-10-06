@@ -1,10 +1,9 @@
-
 import { InMemoryDbService } from 'angular-in-memory-web-api';
- 
+
 export class InMemCarsData implements InMemoryDbService {
   createDb() {
-    let carsListAPI =
-    [    
+    const carsListAPI =
+    [
       {
         brandName: 'maruti',
         models: [
@@ -20,21 +19,21 @@ export class InMemCarsData implements InMemoryDbService {
               { label : 'Max Power (bhp@rpm)', maxpower: '81.80bhp@6000rpm' },
               { label : 'Max Torque (nm@rpm)', maxtorque: '69Nm@3500rpm' },
             ],
-            
+
             'fuel-performance': [
-                { label:'Fuel & Performance', fueltype: 'petrol'},
-                { label:'Mileage (City)', mileagecity: '21'},
-                { label:'Mileage(ARAI)', mileage: '26' },
+                { label: 'Fuel & Performance', fueltype: 'petrol'},
+                { label: 'Mileage (City)', mileagecity: '21'},
+                { label: 'Mileage(ARAI)', mileage: '26' },
                 { label: 'Fuel Tank Capacity (Litres)', fuelSize: '35' },
               ],
-              
+
               'dimensions-capacity': [
                 { label: 'Length (mm)', length : '3995'},
                 { label: 'Width (mm)', width: '1745'},
                 { label: 'Height (mm)', height: '1510' },
                 { label: 'Ground Clearance Unladen (mm)',  groundClearance : '170'}
               ],
-              
+
             varient: ['Sigma', 'Delta', 'Zinga'],
           },
           {
@@ -44,7 +43,7 @@ export class InMemCarsData implements InMemoryDbService {
             description:
               'Swift Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
             charging: 'yes',
-            'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
+            img: 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
             'engine-transmission': [
               { label : 'Engine Type', enginetype: 'F8D Petrol Engine'},
               { label : 'Displacement (cc)', displacement: '796'},
@@ -52,9 +51,9 @@ export class InMemCarsData implements InMemoryDbService {
               { label : 'Max Torque (nm@rpm)', maxtorque: '69Nm@3500rpm' },
             ],
             'fuel-performance': [
-              { label :'Fuel & Performance', fueltype : 'petrol'},
-              { label :'Mileage (City)', mileageCity : '21'},
-              { label :'Mileage(ARAI)', mileage : '28' },
+              { label : 'Fuel & Performance', fueltype : 'petrol'},
+              { label : 'Mileage (City)', mileageCity : '21'},
+              { label : 'Mileage(ARAI)', mileage : '28' },
               { label: 'Fuel Tank Capacity (Litres)', fuelSize: '32' }
             ],
             'dimensions-capacity': [
@@ -72,7 +71,7 @@ export class InMemCarsData implements InMemoryDbService {
             description:
               'alto Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
             charging: 'no',
-            'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
+            img: 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
             'engine-transmission': [
               { label : 'Engine Type',  enginetype: 'F8D Petrol Engine'},
               { label : 'Displacement (cc)', displacement: '796'},
@@ -80,9 +79,9 @@ export class InMemCarsData implements InMemoryDbService {
               { label : 'Max Torque (nm@rpm)', maxtorque: '69Nm@3500rpm' },
             ],
             'fuel-performance': [
-              { label :'Fuel & Performance',  fueltype : 'petrol'},
-              { label :'Fuel & Performance',  mileagecity : '17'},
-              { label :'Fuel & Performance',  mileage : '19' },
+              { label : 'Fuel & Performance',  fueltype : 'petrol'},
+              { label : 'Fuel & Performance',  mileagecity : '17'},
+              { label : 'Fuel & Performance',  mileage : '19' },
               { label: 'Fuel Tank Capacity (Litres)', fuelSize: '35' }
             ],
             'dimensions-capacity': [
@@ -100,7 +99,7 @@ export class InMemCarsData implements InMemoryDbService {
             description:
               'dzire Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
             charging: 'no',
-            'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
+            img: 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
             'engine-transmission': [
               { label : 'Engine Type',  enginetype: 'F8D Petrol Engine'},
               { label : 'Displacement (cc)', displacement: '796'},
@@ -108,9 +107,9 @@ export class InMemCarsData implements InMemoryDbService {
               { label : 'Max Torque (nm@rpm)', maxtorque: '69Nm@3500rpm' },
             ],
             'fuel-performance': [
-              { label :'Fuel & Performance',  fueltype : 'petrol'},
-              { label :'Fuel & Performance', mileagecity : '18'},
-              { label :'Fuel & Performance', mileage : '20' },
+              { label : 'Fuel & Performance',  fueltype : 'petrol'},
+              { label : 'Fuel & Performance', mileagecity : '18'},
+              { label : 'Fuel & Performance', mileage : '20' },
               { label: 'Fuel Tank Capacity (Litres)', fuelSize: '28' }
             ],
             'dimensions-capacity': [
@@ -138,21 +137,21 @@ export class InMemCarsData implements InMemoryDbService {
               { label : 'Max Power (bhp@rpm)', maxpower: '81.80bhp@6000rpm' },
               { label : 'Max Torque (nm@rpm)', maxtorque: '69Nm@3500rpm' },
             ],
-            
+
             'fuel-performance': [
-                { label:'Fuel & Performance', fueltype: 'petrol'},
-                { label:'Mileage (City)', mileagecity: '18'},
-                { label:'Mileage(ARAI)', mileage: '22' },
+                { label: 'Fuel & Performance', fueltype: 'petrol'},
+                { label: 'Mileage (City)', mileagecity: '18'},
+                { label: 'Mileage(ARAI)', mileage: '22' },
                 { label: 'Fuel Tank Capacity (Litres)', fuelSize: '35' },
               ],
-              
+
               'dimensions-capacity': [
                 { label: 'Length (mm)', length : '3995'},
                 { label: 'Width (mm)', width: '1745'},
                 { label: 'Height (mm)', height: '1510' },
                 { label: 'Ground Clearance Unladen (mm)',  groundClearance : '170'}
               ],
-              
+
             varient: ['Petrol', 'Diesel'],
           },
           {
@@ -162,7 +161,7 @@ export class InMemCarsData implements InMemoryDbService {
             description:
               'Swift Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
             charging: 'yes',
-            'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
+            img: 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
             'engine-transmission': [
               { label : 'Engine Type',  enginetype: 'F8D Petrol Engine'},
               { label : 'Displacement (cc)', displacement: '796'},
@@ -170,9 +169,9 @@ export class InMemCarsData implements InMemoryDbService {
               { label : 'Max Torque (nm@rpm)', maxtorque: '69Nm@3500rpm' },
             ],
             'fuel-performance': [
-              { label :'Fuel & Performance',  fueltype : 'petrol'},
-              { label :'Mileage (City)',  mileageCity : '18'},
-              { label :'Mileage(ARAI)',  mileage : '21' },
+              { label : 'Fuel & Performance',  fueltype : 'petrol'},
+              { label : 'Mileage (City)',  mileageCity : '18'},
+              { label : 'Mileage(ARAI)',  mileage : '21' },
               { label: 'Fuel Tank Capacity (Litres)', fuelSize: '32' }
             ],
             'dimensions-capacity': [
@@ -190,7 +189,7 @@ export class InMemCarsData implements InMemoryDbService {
             description:
               'alto Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
             charging: 'no',
-            'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
+            img: 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
             'engine-transmission': [
               { label : 'Engine Type',  enginetype: 'F8D Petrol Engine'},
               { label : 'Displacement (cc)', displacement: '796'},
@@ -198,9 +197,9 @@ export class InMemCarsData implements InMemoryDbService {
               { label : 'Max Torque (nm@rpm)', maxtorque: '69Nm@3500rpm' },
             ],
             'fuel-performance': [
-              { label :'Fuel & Performance',  fueltype : 'petrol'},
-              { label :'Mileage (City)',  mileagecity : '14'},
-              { label :'Mileage(ARAI)',  mileage : '16' },
+              { label : 'Fuel & Performance',  fueltype : 'petrol'},
+              { label : 'Mileage (City)',  mileagecity : '14'},
+              { label : 'Mileage(ARAI)',  mileage : '16' },
               { label: 'Fuel Tank Capacity (Litres)', fuelSize: '35' }
             ],
             'dimensions-capacity': [
@@ -209,7 +208,7 @@ export class InMemCarsData implements InMemoryDbService {
               { label: 'Height (mm)', height: '1510' },
               { label: 'Ground Clearance Unladen (mm)',  groundClearance : '170'}
             ],
-            varient: ['petrol','Zeta'],
+            varient: ['petrol', 'Zeta'],
           },
           {
             id: 203,
@@ -218,7 +217,7 @@ export class InMemCarsData implements InMemoryDbService {
             description:
               'dzire Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc Description Dummy Desc ',
             charging: 'no',
-            'img': 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
+            img: 'https://stimg.cardekho.com/images/carexteriorimages/360x240/Maruti/Maruti-Baleno/6780/1564491336282/front-left-side-47.jpg',
             'engine-transmission': [
               { label : 'Engine Type',  enginetype: 'F8D Petrol Engine'},
               { label : 'Displacement (cc)', displacement: '796'},
@@ -226,9 +225,9 @@ export class InMemCarsData implements InMemoryDbService {
               { label : 'Max Torque (nm@rpm)', maxtorque: '69Nm@3500rpm' },
             ],
             'fuel-performance': [
-              { label :'Fuel & Performance',  fueltype : 'petrol'},
-              { label :'Mileage (City)', mileagecity : '18'},
-              { label :'Mileage(ARAI)', mileage : '21' },
+              { label : 'Fuel & Performance',  fueltype : 'petrol'},
+              { label : 'Mileage (City)', mileagecity : '18'},
+              { label : 'Mileage(ARAI)', mileage : '21' },
               { label: 'Fuel Tank Capacity (Litres)', fuelSize: '28' }
             ],
             'dimensions-capacity': [
@@ -241,7 +240,7 @@ export class InMemCarsData implements InMemoryDbService {
           },
         ],
       },
-    ]
+    ];
     return { carsList: carsListAPI };
   }
 }

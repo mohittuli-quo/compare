@@ -9,9 +9,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CarsListService {
-  
+
   carsUrl = '/api/carsList';
-  
+
   constructor(private http: HttpClient) { }
 
   getCarsList(): Observable<any>{

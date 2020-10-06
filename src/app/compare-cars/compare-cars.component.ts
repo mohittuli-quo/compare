@@ -1,12 +1,6 @@
-import {
-    Component,
-    OnInit,
-    Input,
-    ViewChild
-} from '@angular/core';
-import {
-    CarsListService
-} from '../service/cars-list.service';
+import { Component, OnInit, OnDestroy} from '@angular/core';
+import { CarsListService } from '../service/cars-list.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,13 +8,12 @@ import {
     templateUrl: './compare-cars.component.html',
     styleUrls: ['./compare-cars.component.scss'],
 })
-export class CompareCarsComponent implements OnInit {
+export class CompareCarsComponent implements OnInit, OnDestroy {
     carsList = [];
     varientMatch = [];
-
+    carListSubscription: Subscription;
     selectedCars: any[] = [];
-    showTab: Boolean = false;
-    selectcar: Boolean = false;
+    showTab = false;
     filteredData: any[] = [];
     tabLists: string[] = ['Carname', 'Carmodel'];
     selectTabLists = '';
@@ -28,21 +21,18 @@ export class CompareCarsComponent implements OnInit {
             model: 'select Model/Varient',
             varient: [{}],
             img: '',
-            removedVarients: [],
             selectedVarient: []
         },
         {
             model: 'select Model/Varient',
             varient: [{}],
             img: '',
-            removedVarients: [],
             selectedVarient: []
         },
         {
             model: 'select Model/Varient',
             varient: [{}],
             img: '',
-            removedVarients: [],
             selectedVarient: []
         },
     ];
@@ -50,24 +40,22 @@ export class CompareCarsComponent implements OnInit {
     constructor(private carsListService: CarsListService) {}
 
 
-
-    ngOnInit() {
+    ngOnInit(): void {
         this.getCarsListFromAPI();
     }
 
-    getCarsListFromAPI() {
-        this.carsListService.getCarsList().subscribe(res => {
+    getCarsListFromAPI(): void {
+       this.carListSubscription = this.carsListService.getCarsList().subscribe(res => {
             this.carsList = res;
-        })
+        });
     }
 
-
-    selectCar(index) {
+    selectCar(index): void {
         this.showTab = index;
         this.selectTabLists = this.tabLists[0];
     }
 
-    getCarsName(carModel, index) {
+    getCarsName(carModel, index): void {
 
         this.getCarModelArr[index] = carModel;
         this.selectedCars[index] = this.getCarModelArr[index];
@@ -80,18 +68,21 @@ export class CompareCarsComponent implements OnInit {
         }
     }
 
- 
-    getCarsVarient(carVarient, index) {
+    getCarsVarient(carVarient, index): void {
         this.getCarModelArr[index].selectedVarient = carVarient;
         console.log(this.getCarModelArr);
         this.showTab = false;
     }
 
-    compareCars() {
+    compareCars(): void {
         this.filteredData = this.selectedCars;
         if (this.filteredData.length <= 1) {
-            alert("Please select at least 2 cars");
+            alert('Please select at least 2 cars');
         }
+    }
 
+    ngOnDestroy(): void{
+        console.log('Ng Destroy Called');
+        this.carListSubscription.unsubscribe();
     }
 }
