@@ -1,5 +1,5 @@
   export interface CarList {
-     id: number,
+   //   id: number,
      model: string,
      varient: string,
      imageUrl: string 

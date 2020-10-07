@@ -1,3 +1,9 @@
+a{
+    color: #42a6d3;
+    &:hover{
+        text-decoration: none;
+    }
+}
 .compare{
     color: #444444;
     ul{
@@ -28,7 +34,7 @@
         max-width: 250px;
         min-width: 250px;
         width: 25%;
-        background: #fff;
+        // background: rgb(77, 75, 75);
         text-align: left;
         border-radius: 4px;
         box-shadow: 0 1px 3px rgba(36,39,44,.15);
@@ -75,7 +81,6 @@
     }
     .addCar__brand{
         cursor: pointer;
-        // padding: 20px;
         .select-carmodel{
             >p{
                 padding: 7px 15px;
@@ -142,6 +147,19 @@
         display: inline-block;
         padding: 0 2px;
         margin-right: 20px;
+
+        &:nth-of-type(2){
+            pointer-events: none;
+            
+            a{
+                color: #d5d5d5;
+            }
+
+            a.enable-click{
+                pointer-events: auto;
+                color: #42a6d3;
+            }
+        }
 
         &.active{
 

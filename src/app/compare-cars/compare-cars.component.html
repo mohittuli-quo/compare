@@ -1,11 +1,12 @@
+<!-- {{myConstant.length}} -->
+
 <div class="container mt-4 cars-wrapper">
   <h1 class="text-center">Confused? Easy way to compare cars</h1>
   <div class="row">
     <div class="col-sm-12 px-0 addCar">
       <ul>
         <li
-          class="addCar__list"
-          id="car1"
+          class="addCar__list" 
           *ngFor="let cardetails of getCarModelArr; let i = index"
         >
           <!-- {{this.getCarModelArr.model}} -->
@@ -27,7 +28,7 @@
                 <div *ngIf="cardetails.model === ''; else selectList">
                   <p>Select Brand/Model</p>
                 </div>
-                <div *ngIf="cardetails.varient === ''; else selectList2">
+                <div *ngIf="cardetails.selectedVarient === ''; else selectList2">
                   <p>Select Varient</p>
                 </div>
                 <ng-template #selectList>
@@ -52,7 +53,8 @@
                                 *ngFor="let tabList of tabLists"
                                 [class.active]="selectTabLists === tabList"
                               >
-                                <a (click)="selectTabLists = tabList">
+                                <a (click)="selectTabLists = tabList" 
+                                [ngClass]="{'enable-click' : (selectTabLists === 'Carmodel')}">
                                   {{ tabList }}
                                 </a>
                               </li>
