@@ -24,16 +24,13 @@ export class CarsListService {
       carList = res;
       
       carList.filter(cars => {
-        // debugger;
         this.carModels.push(cars.models);
        })
 
        this.carModels.forEach(cars => {
-          //  debugger;
-          cars.filter(car => {
+        cars.filter(car => {
             if(car.id === id[0] || car.id === id[1] || car.id === id[2] ){
              this.selectedCars.push(car);
-              // console.log(this.selectedCars);
             }
           })
        })

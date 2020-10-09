@@ -51,10 +51,8 @@ export class CompareCarsComponent implements OnInit, OnDestroy {
 
         this.getCarModelArr[index].model = carModel.name;
         this.getCarModelArr[index].img = carModel.img;
-        // this.carsId.push([carModel.id]);
-        // console.log(this.carsId);
-
-            //After Car Model selected
+    
+        //After Car Model selected
         if (this.getCarModelArr[index].model) {
             this.tabDisabled = true;
             this.selectTabLists = this.tabLists[1];
@@ -80,17 +78,13 @@ export class CompareCarsComponent implements OnInit, OnDestroy {
         this.filteredData.filter(arrayObj => {
             const filteredId = arrayObj.id;
             this.carsId.push(filteredId);
-            console.log(this.carsId);
         });
 
-            // this.router.navigate(['/compare-cars-detail', {carId: JSON.stringify(this.carsId) } ]);
-            // this.router.navigate(['/compare-cars-detail'], {queryParams: {selectedCarsData: this.getCarModelArr}});
-            this.router.navigate(['/compare-cars-detail'], {queryParams: {selectedCarsData: JSON.stringify(this.carsId)} });
+        this.router.navigate(['/compare-cars-detail'], {queryParams: {selectedCarsData: JSON.stringify(this.carsId)} });
         }
     }
 
     ngOnDestroy(): void{
-        // console.log('Ng Destroy Called');
         this.carListSubscription.unsubscribe();
     }
 }
