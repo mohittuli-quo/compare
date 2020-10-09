@@ -52,7 +52,7 @@ export class InMemCarsData implements InMemoryDbService {
             ],
             'fuel-performance': [
               { label : 'Fuel & Performance', fueltype : 'petrol'},
-              { label : 'Mileage (City)', mileageCity : '21'},
+              { label : 'Mileage (City)', mileagecity : '21'},
               { label : 'Mileage(ARAI)', mileage : '28' },
               { label: 'Fuel Tank Capacity (Litres)', fuelSize: '32' }
             ],

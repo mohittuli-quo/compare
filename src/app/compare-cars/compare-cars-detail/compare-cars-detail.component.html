@@ -1,0 +1,184 @@
+<div class="container">
+    <h1 class="mt-5 mb-5 text-center">Selected Cars</h1>
+    <div class="col-sm-12 px-0 addCar">
+      <ul>
+        <li class="addCar__list" *ngFor="let cardetails of selectedCars">
+          <div class="card addCar__brand">
+            <div class="row m-0 flex-column">
+              <img
+                class="card-img-top"
+                src="{{ cardetails.img }}"
+                alt="Card image"
+                style="width: 100%;"
+              />
+              <div class="card-body p-0 select-carmodel">
+                <p>{{ cardetails.id }}</p>
+                <p>{{ cardetails.name }}</p>
+                <p>{{cardetails.varient}}</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  <div class="col-sm-12 text-center selectedCars">
+    <div class="row sticky-row">
+      <div class="col fake-div">
+        &nbsp;
+      </div>
+      <div class="col" *ngFor="let carData of selectedCars">
+        {{ carData.name }}
+      </div>
+    </div>
+    <!--row ends here-->
+    <div class="row feature-card">
+      <h3 class="mb-4">Fuel & Performance</h3>
+      <div class="feature-card-row">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td class="text-left">Fuel & Performance</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div *ngFor="let fuel of cData['fuel-performance']">
+                    {{ fuel.fueltype }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Mileage (City)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div *ngFor="let fuel of cData['fuel-performance']">
+                    {{ fuel.mileagecity }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Mileage (ARAI)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div *ngFor="let fuel of cData['fuel-performance']">
+                    {{ fuel.mileage }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Fuel Tank Capacity (Litres)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div *ngFor="let fuel of cData['fuel-performance']">
+                    {{ fuel.fuelSize }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--row ends here-->
+
+    <div class="row feature-card">
+      <h3 class="mb-4">Engine & Transmission</h3>
+      <div class="feature-card-row">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td class="text-left">Engine Type</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div
+                    *ngFor="let transmission of cData['engine-transmission']"
+                  >
+                    {{ transmission.enginetype }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Displacement (cc)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div
+                    *ngFor="let transmission of cData['engine-transmission']"
+                  >
+                    {{ transmission.displacement }}
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="text-left">Max Power (bhp@rpm)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div
+                    *ngFor="let transmission of cData['engine-transmission']"
+                  >
+                    {{ transmission.maxpower }}
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="text-left">Max Torque (nm@rpm)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div
+                    *ngFor="let transmission of cData['engine-transmission']"
+                  >
+                    {{ transmission.maxtorque }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--row ends here-->
+
+    <div class="row feature-card">
+      <h3 class="mb-4">Dimensions & Capacity</h3>
+      <div class="feature-card-row">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td class="text-left">Length (mm)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div *ngFor="let dimensions of cData['dimensions-capacity']">
+                    {{ dimensions.length }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Width (mm)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div *ngFor="let width of cData['dimensions-capacity']">
+                    {{ width.width }}
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="text-left">Height (mm)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div *ngFor="let height of cData['dimensions-capacity']">
+                    {{ height.height }}
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="text-left">Ground Clearance Unladen (mm)</td>
+                <td *ngFor="let cData of selectedCars">
+                  <div
+                    *ngFor="let groundClearance of cData['dimensions-capacity']"
+                  >
+                    {{ groundClearance.groundClearance }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--row ends here-->
+  </div>
+</div>

@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewChild } from '@angular/core';
 import { CarsListService } from '../service/cars-list.service';
 import { Subscription } from 'rxjs';
 import { CarsCompareList } from '../utils/constants'
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class CompareCarsComponent implements OnInit, OnDestroy {
     tabDisabled: boolean = false;
 
 
-    constructor(private carsListService: CarsListService) {}
+    constructor(private carsListService: CarsListService, private router: Router) {}
 
 
     ngOnInit(): void {
@@ -49,13 +51,15 @@ export class CompareCarsComponent implements OnInit, OnDestroy {
 
         this.getCarModelArr[index].model = carModel.name;
         this.getCarModelArr[index].img = carModel.img;
+        // this.carsId.push([carModel.id]);
+        // console.log(this.carsId);
 
             //After Car Model selected
         if (this.getCarModelArr[index].model) {
             this.tabDisabled = true;
             this.selectTabLists = this.tabLists[1];
          }
-    }
+        }
 
     //get Car Varient selected    
     getCarsVarient(carVarient, index): void {
@@ -63,16 +67,30 @@ export class CompareCarsComponent implements OnInit, OnDestroy {
         this.showTab = false;
     }
 
+    carsId = [];
+
     compareCars(): void {
         this.filteredData = this.selectedCars;
 
         if (this.filteredData.length <= 1) {
             alert('Please select at least 2 cars');
         }
+        else{
+        this.filteredData = this.selectedCars;
+        this.filteredData.filter(arrayObj => {
+            const filteredId = arrayObj.id;
+            this.carsId.push(filteredId);
+            console.log(this.carsId);
+        });
+
+            // this.router.navigate(['/compare-cars-detail', {carId: JSON.stringify(this.carsId) } ]);
+            // this.router.navigate(['/compare-cars-detail'], {queryParams: {selectedCarsData: this.getCarModelArr}});
+            this.router.navigate(['/compare-cars-detail'], {queryParams: {selectedCarsData: JSON.stringify(this.carsId)} });
+        }
     }
 
     ngOnDestroy(): void{
-        console.log('Ng Destroy Called');
+        // console.log('Ng Destroy Called');
         this.carListSubscription.unsubscribe();
     }
 }
