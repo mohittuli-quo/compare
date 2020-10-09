@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input, ViewChild } from '@angular/core';
 import { CarsListService } from '../service/cars-list.service';
 import { Subscription } from 'rxjs';
-import { CarsCompareList } from '../utils/constants'
+import { CarsCompareList, minCarsCount } from '../utils/constants'
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 
@@ -71,7 +71,7 @@ export class CompareCarsComponent implements OnInit, OnDestroy {
         this.filteredData = this.selectedCars;
 
         if (this.filteredData.length <= 1) {
-            alert('Please select at least 2 cars');
+            alert(minCarsCount);
         }
         else{
         this.filteredData = this.selectedCars;
@@ -80,7 +80,8 @@ export class CompareCarsComponent implements OnInit, OnDestroy {
             this.carsId.push(filteredId);
         });
 
-        this.router.navigate(['/compare-cars-detail'], {queryParams: {selectedCarsData: JSON.stringify(this.carsId)} });
+        // this.router.navigate(['/compare-cars-detail'], {queryParams: {selectedCarsData: JSON.stringify(this.carsId)} });
+        this.router.navigate(['/compare-cars-detail'], {queryParams: {selectedCarsData: JSON.stringify(this.filteredData)}, skipLocationChange: true });
         }
     }
 

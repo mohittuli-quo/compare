@@ -1,5 +1,5 @@
-<div class="container mt-4 cars-wrapper">
-  <h1 class="text-center">Confused? Easy way to compare cars</h1>
+<div class="container cars-wrapper">
+  <h1 class="text-center mb-5">Confused? Easy way to compare cars</h1>
   <div class="row">
     <div class="col-sm-12 px-0 addCar">
       <ul>
@@ -26,14 +26,14 @@
                 <div *ngIf="cardetails.model === ''; else selectList">
                   <p>Select Brand/Model</p>
                 </div>
-                <div *ngIf="cardetails.selectedVarient === ''; else selectList2">
+                <div *ngIf="cardetails.selectedVarient == ''; else selectList2">
                   <p>Select Varient</p>
                 </div>
                 <ng-template #selectList>
                   <p>{{ cardetails.model }}</p>
                 </ng-template>
                 <ng-template #selectList2>
-                  <p>{{ cardetails.selectedVarient ? cardetails.selectedVarient : 'Select Varient' }}</p>
+                  <p>{{ cardetails.selectedVarient ? cardetails.selectedVarient : cardetails.model }}</p>
                 </ng-template>
               </div>
             </div>

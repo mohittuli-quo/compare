@@ -84,3 +84,30 @@
 
     }
 }
+.compare-car-again{
+    text-decoration: none;
+    background: #42a6d3;
+    border-color: #42a6d3;
+    padding: 15px 35px;
+    font-size: 1.3rem;
+    box-shadow: 0 0 black;
+    border: 0;
+    color: #fff;
+    border-radius: 4px;
+    display: inline-block;
+    &:hover{
+        background: rgba(66, 166, 211, 0.8);
+        border-color: rgb(66, 166, 211);
+        outline:none;
+    }
+    &:focus{
+        background: rgba(66, 166, 211, 0.8);
+        border-color: rgb(66, 166, 211);
+        outline:none;
+    }
+    &:active{
+        background: rgba(66, 166, 211, 0.8);
+        border-color: rgb(66, 166, 211);
+        box-shadow: none;
+    }
+}

@@ -12,14 +12,17 @@
                 style="width: 100%;"
               />
               <div class="card-body p-0 select-carmodel">
-                <p>{{ cardetails.id }}</p>
+                <!-- <p>{{ cardetails.id }}</p> -->
                 <p>{{ cardetails.name }}</p>
-                <p>{{cardetails.varient}}</p>
+                <p>{{cardetails.selectedVarient}}</p>
               </div>
             </div>
           </div>
         </li>
       </ul>
+      <div class="col-sm-12 text-center">
+        <a href="#" (click)="backNavigation()" class="compare-car-again mt-5 mb-5">Go Back</a>
+      </div>
     </div>
 
   <div class="col-sm-12 text-center selectedCars">
@@ -28,7 +31,7 @@
         &nbsp;
       </div>
       <div class="col" *ngFor="let carData of selectedCars">
-        {{ carData.name }}
+        {{ carData.name }} ({{carData.selectedVarient}})
       </div>
     </div>
     <!--row ends here-->

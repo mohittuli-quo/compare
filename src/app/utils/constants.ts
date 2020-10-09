@@ -21,4 +21,4 @@ export const CarsCompareList = [
 ]
 
 
-export const MY_TEST_CONSTANT = [1,2,3];
+export const minCarsCount = "Please select at least 2 cars";

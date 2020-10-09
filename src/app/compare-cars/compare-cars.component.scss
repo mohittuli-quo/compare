@@ -1,252 +1,197 @@
-a{
-    color: #42a6d3;
-    &:hover{
-        text-decoration: none;
-    }
+a {
+  color: #42a6d3;
+  &:hover {
+    text-decoration: none;
+  }
 }
-.compare{
-    color: #444444;
-    ul{
-        display: flex;
-        list-style-type: none;
-        .compare__list{
-            // padding: 5px;
-            max-width: 250px;
-            min-width: 250px;
-            width: 25%;
+.compare {
+  color: #444444;
+  ul {
+    display: flex;
+    list-style-type: none;
+    .compare__list {
+      // padding: 5px;
+      max-width: 250px;
+      min-width: 250px;
+      width: 25%;
 
-            .compare__list--card{
-                width: 100%;
-            }
-        }
+      .compare__list--card {
+        width: 100%;
+      }
     }
+  }
 }
+.cars-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-.addCar{
+  .addCar {
     color: #444444;
-    >ul{
-        display: flex;
-        justify-content: space-between;
+    > ul {
+      display: flex;
+      justify-content: space-between;
     }
 
-    .addCar__list{
+    .addCar__list {
+      position: relative;
+      max-width: 250px;
+      min-width: 250px;
+      width: 25%;
+      // background: rgb(77, 75, 75);
+      text-align: left;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(36, 39, 44, 0.15);
+      // box-shadow: 1px 2px 3px 2px rgba(0,0,0,0.1);
+      // padding: 10px;
+
+      img {
+        width: 100%;
+      }
+      .addCar__brand--image {
+        width: 72px;
+        height: 72px;
+        border: 1px dashed #24272c;
+        opacity: 0.5;
+        -moz-opacity: 0.5;
+        display: block;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
         position: relative;
-        max-width: 250px;
-        min-width: 250px;
-        width: 25%;
-        // background: rgb(77, 75, 75);
-        text-align: left;
-        border-radius: 4px;
-        box-shadow: 0 1px 3px rgba(36,39,44,.15);
-        // box-shadow: 1px 2px 3px 2px rgba(0,0,0,0.1);
-        // padding: 10px;
-    
-        img{
-            width: 100%;
+        margin: 69px auto 8px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: #24272c;
+          top: 50%;
+          left: 50%;
+          width: 2px;
+          height: 18px;
+          margin-top: -8px;
         }
-        .addCar__brand--image{
-            width: 72px;
-            height: 72px;
-            border: 1px dashed #24272c;
-            opacity: .5;
-            -moz-opacity: .5;
-            display: block;
-            -webkit-border-radius: 50%;
-            border-radius: 50%;
-            position: relative;
-            margin: 69px auto 8px;
-            
-            &::before{
-                content: "";
-                position: absolute;
-                background-color: #24272c;
-                top: 50%;
-                left: 50%;
-                width: 2px;
-                height: 18px;
-                margin-top: -8px;
-            }
-    
-            &::after{
-                content: "";
-                position: absolute;
-                background-color: #24272c;
-                top: 50%;
-                left: 50%;
-                width: 18px;
-                height: 2px;
-                margin-left: -8px;
-            }
+
+        &::after {
+          content: "";
+          position: absolute;
+          background-color: #24272c;
+          top: 50%;
+          left: 50%;
+          width: 18px;
+          height: 2px;
+          margin-left: -8px;
         }
+      }
     }
-    .addCar__brand{
-        cursor: pointer;
-        .select-carmodel{
-            >p{
-                padding: 7px 15px;
-                width: 100%;
-                color: #ccc;
-                border-color: #ccc;
-                background: #fff;
-                cursor: pointer;
-                margin: 0;
-                border: 1px solid #f4f4f4;
-                border-radius: 2px;
-            }
+    .addCar__brand {
+      cursor: pointer;
+      .select-carmodel {
+        p {
+          padding: 7px 15px;
+          width: 100%;
+          color: #ccc;
+          border-color: #ccc;
+          background: #fff;
+          cursor: pointer;
+          margin: 0;
+          border: 1px solid #f4f4f4;
+          border-radius: 2px;
         }
-       .addCar__selectTab{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #ffffff;
-            z-index: 9;
-            overflow: auto;
-            padding: 10px;
-            box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
-
-            .addCar__brand__list{
-                
-                .addCar__brand__name{
-                    font-size: 14px;
-                    ul{
-                        h6{
-                            font-weight: bold;
-                            margin: 10px 0 2px;
-                        }
-                        .addCar__brand--list{
-                            cursor: pointer;
-                            padding-left: 7px;
-                            &:hover{
-                                background-color: #42a6d3;
-                                color: #fff;
-                            }
-                        }
-                        .addModel__brand--list{
-                            cursor: pointer;
-                            padding-left: 7px;
-                            &:hover{
-                                background-color: #42a6d3;
-                                color: #fff;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-    }
-}
-
-
-.custom-tab-list{
-        margin-bottom: 10px;
-        border-bottom: 1px solid #f2f2f2;
-    li{ 
-        display: inline-block;
-        padding: 0 2px;
-        margin-right: 20px;
-
-        &:nth-of-type(2){
-            pointer-events: none;
-            
-            a{
-                color: #d5d5d5;
-            }
-
-            a.enable-click{
-                pointer-events: auto;
-                color: #42a6d3;
-            }
-        }
-
-        &.active{
-
-            color: #42a6d3;
-            border-bottom: 2px solid #42a6d3;
-        
-        }
-    }
-}
-
-.cars-wrapper{
-    button{
-        background: rgb(66, 166, 211);
-        border-color: rgb(66, 166, 211);
-        width: 200px;
-        height: 60px;
-        font-size: 1.3rem;
-        box-shadow: none;
-        &:hover{
-            background: rgba(66, 166, 211, 0.8);
-            border-color: rgb(66, 166, 211);
-            outline:none;
-        }
-        &:focus{
-            background: rgba(66, 166, 211, 0.8);
-            border-color: rgb(66, 166, 211);
-            outline:none;
-        }
-        &:active{
-            background: rgba(66, 166, 211, 0.8);
-            border-color: rgb(66, 166, 211);
-            box-shadow: none;
-        }
-    }
-}
-
-.cars-wrapper{
-    h1{
-        margin: 5rem 7rem 8rem;
-    }
-}
-.filteredData{
-    color: #444444;
-    // background: #fff;
-    padding: 20px;
-    text-transform: capitalize;
-
-    .sticky-row{
-        position: sticky;
+      }
+      .addCar__selectTab {
+        position: absolute;
         top: 0;
-        padding: 20px;
-        background: #fff;
-        margin-bottom: 10px;
-        font-weight: bold;
-        box-shadow: 0 1px 3px rgba(36, 39, 44, 0.15);
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        z-index: 9;
+        overflow: auto;
+        padding: 10px;
+        box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
 
-        .fake-div{
-            max-width: 250px;
-        }
-    }
-
-    h1{
-        color: #444444;
-    }
-
-    .feature-card{
-        -webkit-box-shadow: 0 1px 3px rgba(36,39,44,.15);
-        box-shadow: 0 1px 3px rgba(36,39,44,.15);
-        background: #fff;
-        margin: 0 0 50px 0;
-        padding: 30px;
-
-        .feature-card-row{
-            width: 100%;
-            display: flex;
-        }
-    }
-
-    table{
-        tr{
-            td{
-                &:nth-of-type(1){
-                    width: 250px;
+        .addCar__brand__list {
+          .addCar__brand__name {
+            font-size: 14px;
+            ul {
+              h6 {
+                font-weight: bold;
+                margin: 10px 0 2px;
+              }
+              .addCar__brand--list {
+                cursor: pointer;
+                padding-left: 7px;
+                &:hover {
+                  background-color: #42a6d3;
+                  color: #fff;
                 }
+              }
+              .addModel__brand--list {
+                cursor: pointer;
+                padding-left: 7px;
+                &:hover {
+                  background-color: #42a6d3;
+                  color: #fff;
+                }
+              }
             }
+          }
         }
+      }
     }
+  }
 
+  .custom-tab-list {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f2f2f2;
+    li {
+      display: inline-block;
+      padding: 0 2px;
+      margin-right: 20px;
 
+      &:nth-of-type(2) {
+        pointer-events: none;
+
+        a {
+          color: #d5d5d5;
+        }
+
+        a.enable-click {
+          pointer-events: auto;
+          color: #42a6d3;
+        }
+      }
+
+      &.active {
+        color: #42a6d3;
+        border-bottom: 2px solid #42a6d3;
+      }
+    }
+  }
+
+  button {
+    background: rgb(66, 166, 211);
+    border-color: rgb(66, 166, 211);
+    width: 200px;
+    height: 60px;
+    font-size: 1.3rem;
+    box-shadow: none;
+    &:hover {
+      background: rgba(66, 166, 211, 0.8);
+      border-color: rgb(66, 166, 211);
+      outline: none;
+    }
+    &:focus {
+      background: rgba(66, 166, 211, 0.8);
+      border-color: rgb(66, 166, 211);
+      outline: none;
+    }
+    &:active {
+      background: rgba(66, 166, 211, 0.8);
+      border-color: rgb(66, 166, 211);
+      box-shadow: none;
+    }
+  }
 }
